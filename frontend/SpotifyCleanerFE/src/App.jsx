@@ -1,14 +1,16 @@
 import {useEffect, useState} from 'react'
-import Axios from 'axios'
+import axios from 'axios'
 import LoginScreen from './LoginScreen.jsx'
 import './styles.css'
+import ChoosePlaylist from './ChoosePlaylist.jsx';
 
 
 function App() {
   const CLIENT_ID = '57dff32642834b67b59cfa703af73f46';
   const REDIRECT_URI = "http://localhost:5173";
-  const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
-  const RESPONSE_TYPE = "token"
+  const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
+  const RESPONSE_TYPE = "token";
+  const SCOPE = "playlist-read-private"
 
   const [token, setToken] = useState("");
   useEffect(() => {
@@ -50,10 +52,10 @@ function App() {
     <>
       {!token ?
       <LoginScreen>
-      <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>Login
+      <a href={`${AUTH_ENDPOINT}?scope=${SCOPE}&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>Login
             to Spotify</a>
       </LoginScreen>
-      : <button onClick = {logout}>logout</button>}
+      : <ChoosePlaylist logout = {logout} token = {token}/>}
     </>
   )
 }
