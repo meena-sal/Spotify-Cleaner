@@ -1,30 +1,12 @@
 import React from 'react';
+import './containerStyles.css'
 
 
 function LoginScreen(props) {
-    const containerStyle = {
-        display: 'flex',       
-        justifyContent: 'center', 
-        alignItems: 'center',     
-        minHeight: '100vh',    
-      };
-
-    const smallBox = {
-        backgroundColor: 'green',
-        color: 'black',
-        width: '50vh',
-        height: '50vh',
-        display: 'flex',
-        justifyContent: 'center', 
-        alignItems: 'center'
-    }
-
-    
-
 
   return (
-    <div style = {containerStyle}>
-        <div style = {smallBox}>
+    <div className = "pageContainer">
+        <div className = "smallBox">
             <div>
             <h1>Please login to Spotify!</h1>
             {props.children}
